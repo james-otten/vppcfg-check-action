@@ -1,0 +1,31 @@
+bondethernets: {}
+bridgedomains:
+  bd10:
+    description: ''
+    interfaces:
+    - HundredGigabitEthernet12/0/0
+    mtu: 8996
+interfaces:
+  GigabitEthernet3/0/0:
+    description: ''
+    mtu: 9000
+    sub-interfaces:
+      100:
+        addresses:
+        - 2001:db8:1::1/64
+        description: ''
+        encapsulation:
+          dot1q: 100
+          exact-match: true
+        mtu: 9000
+  GigabitEthernet3/0/1:
+    description: ''
+    mtu: 9000
+  HundredGigabitEthernet12/0/0:
+    description: ''
+    mtu: 8996
+  HundredGigabitEthernet12/0/1:
+    description: ''
+    mtu: 8996
+loopbacks: {}
+vxlan_tunnels: {}

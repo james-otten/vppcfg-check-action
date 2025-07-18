@@ -1,0 +1,39 @@
+name: 'vppcfg check action'
+description: 'Check a vpp config with vppcfg'
+inputs:
+  config-file:
+    description: "Config file to check"
+    required: true
+  schema-file:
+    description: "Schema file other than builtin to use"
+    required: false
+  vppcfg-ref:
+    description: "Ref of vppcfg to install"
+    required: false
+    default: "main"
+outputs:
+  exit-code:
+    description: "Exit code of vppcfg"
+    value: ${{ steps.vppcfg.outputs.exitcode }}
+runs:
+  using: "composite"
+  steps:
+    - name: Install vppcfg
+      uses: ./.github/actions/setup-vppcfg/
+      with:
+        vppcfg-ref: ${{ inputs.vppcfg-ref }}
+
+    - name: Run vppcfg
+      id: vppcfg
+      shell: bash
+      run: |-
+        if [ -z "$SCHEMA" ]; then
+          (set +e; vppcfg check --config "$CONFIG"); status=$?
+        else
+          (set +e; vppcfg check --config "$CONFIG" --schema "$SCHEMA"); status=$?
+        fi
+        echo "vppcfg exit status: $status"
+        echo "exitcode=$status" >> "$GITHUB_OUTPUT"
+      env:
+        CONFIG: ${{ inputs.config-file }}
+        SCHEMA: ${{ inputs.schema-file }}
