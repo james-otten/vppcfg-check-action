@@ -19,7 +19,7 @@ runs:
   using: "composite"
   steps:
     - name: Install vppcfg
-      uses: james-otten/setup-vppcfg@main
+      uses: james-otten/setup-vppcfg-action@main
       with:
         vppcfg-ref: ${{ inputs.vppcfg-ref }}
 
