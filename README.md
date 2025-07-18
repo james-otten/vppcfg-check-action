@@ -7,7 +7,7 @@ Run [vppcfg](https://git.ipng.ch/ipng/vppcfg) check.
 ```
     - uses: actions/checkout@v4
     - name: Install vppcfg
-      uses: setup-vppcfg-action@main
+      uses: james-otten/setup-vppcfg-action@main
       with:
         config-file: config.yml
         vppcfg-ref: "main"
