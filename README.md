@@ -7,7 +7,7 @@ Run [vppcfg](https://git.ipng.ch/ipng/vppcfg) check.
 ```
     - uses: actions/checkout@v4
     - name: Install vppcfg
-      uses: james-otten/setup-vppcfg-action@main
+      uses: james-otten/vppcfg-check-action@main
       with:
         config-file: config.yml
         vppcfg-ref: "main"
@@ -18,5 +18,5 @@ Run [vppcfg](https://git.ipng.ch/ipng/vppcfg) check.
 | Input  | Description | Required |
 | :---       |     :---     |    :---:   |
 | `config-file` | VPP config file to test | Required
-| `config-file` | Schema file other than the builtin one to use | Optional
+| `schema-file` | Schema file other than the builtin one to use | Optional
 | `vppcfg-ref` | Ref of vppcfg to install. Default `main` | Optional
