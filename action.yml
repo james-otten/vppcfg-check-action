@@ -20,8 +20,6 @@ runs:
   steps:
     - name: Install vppcfg
       uses: james-otten/setup-vppcfg-action@main
-      with:
-        vppcfg-ref: ${{ inputs.vppcfg-ref }}
 
     - name: Run vppcfg
       id: vppcfg
